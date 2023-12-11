@@ -1,0 +1,172 @@
+@import url(https://fonts.bunny.net/css?family=sora:400);
+
+body {
+	background-image: url("../img/3.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	font-family: "Sora", sans-serif;    
+	color: #fff;
+}
+
+li {
+	list-style: none;
+	z-index: 100000;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 1rem;
+}
+
+a:hover {
+	color: orange;	
+}
+
+header {
+	position: fixed;
+	top: 0;
+	padding: 0 2rem;
+	width: 80%;
+}
+
+.navbar {
+	width: 100%;
+	height: 60px;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbar .logo a {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.navbar .links {
+	display: flex;
+	gap: 2rem;
+}
+
+.navbar .toggle_btn {
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	display: none;
+}
+
+/* DROPDOWN MENU */
+.dropdown_menu {
+	display: none;
+	position: absolute;
+	right: 2rem;
+	top: 60px;
+	height: 0;
+	width: 300px;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(15px);
+	border-radius: 10px;
+	overflow: hidden;
+	transition: heigth 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+	height: auto;
+}
+
+.dropdown_menu li {
+	padding: 0.7rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* RESPONSIVE MEDIA */
+@media (max-width : 992px) {
+	.navbar .links {
+		display: none;
+	}
+
+	.navbar .toggle_btn {
+		display: block;
+	}
+
+	.dropdown_menu {
+		display: block;
+	}
+
+}
+
+@media (max-width : 576px) {
+	.dropdown_menu {
+		left: 2rem;
+		width: unset;
+	}
+}
+
+:root {
+	--base: #2020200f;
+}
+
+#container {
+	display: flex;
+    justify-content: center;
+	width: 480px;
+	flex-wrap: wrap;
+}
+
+.card {
+	--mouseX: 50vh;
+	--mouseY: 50vw;
+	background-color: var(--base);
+	padding: 40px;
+	margin: 10px 5px;
+	border-radius: 15px;
+	backdrop-filter: blur(10px);
+	position: relative;
+	width: 70px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 15px;
+	background: radial-gradient(
+		250px circle at var(--mouseX) var(--mouseY),
+		#076c1b2f 0%,
+		var(--base) 100%
+	);
+	transition-duration: 700ms;
+	opacity: 0;
+}
+.card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 15px;
+	padding: 1px;
+	background: radial-gradient(
+		300px circle at var(--mouseX) var(--mouseY),
+		#00ff11 0%,
+		#404040 50%
+	);
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask-composite: exclude;
+}
+.card:hover::after {
+	opacity: 1;
+}
